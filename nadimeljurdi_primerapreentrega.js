@@ -2,11 +2,11 @@
         let continuar = "si";
         let monto = 100000;
         let deuda = 0;
+        const estanteria = [];
 function ver(){
     console.log(`Usted tiene ${monto} en su cuenta.`);
     console.log(`Usted debe un total de ${deuda} en su cuenta`);
 }
-
 function depositar(){
     do{
     let montoIngresado = parseInt(prompt(`¿Cuanto desea depositar?`));
@@ -18,7 +18,6 @@ function depositar(){
     continuar = prompt("¿Desea depositar mas?, diga SI o NO");
 }while(continuar=="si" || continuar=="SI" || continuar=="Si" || continuar=="sI");
 }  
-
 function retirar(){
     do{
     let montoIngresado = parseInt(prompt(`¿Cuanto desea retirar?`));
@@ -35,7 +34,6 @@ function retirar(){
 
 }while(continuar=="si" || continuar=="SI" || continuar=="Si" || continuar=="sI");
 }  
-
 function prestamo(prestar,tiempo){
     let seleccionar = prompt(`Seleccione una opcion de las siguientes:
     1 - Tomar un prestamo.
@@ -71,18 +69,88 @@ function prestamo(prestar,tiempo){
 }
 
 }
-
+function ingresarAdministrador(){
+    let clave = 12345
+    if(prompt("Ingrese su clave de administrador para acceder.") == clave){
+        let accionAdmin = prompt(`Ingrese la accion a realizar:
+        1 - Ingresar Zapato.
+        2 - Retirar Zapatos.
+        3 - Modificar Cantidades.`);
+        switch(accionAdmin){
+            case "1":
+                ingresarZapato();
+            break;
+            case "2":
+            break;
+            case "3":
+            break;
+            default:
+            break;
+        }    
+    }else{
+        console.log("Lo siente, clave incorrecta. Vuelva a intentarlo.")
+    }
+}
+function ingresarZapato(){
+    class Zapato{
+        constructor(modelo,color,cantidad, precio){
+            this.modelo= modelo,
+            this.color= color,
+            this.cantidad= cantidad,
+            this.precio = precio
+        }
+    }
+    let cantidadAIngresar= prompt("Ingrese cuantos modelos de zapatos desea ingresar."); 
+    for(let i = 1; i <= cantidadAIngresar; i++){
+        let modelo = prompt("Ingrese el modelo de zapato a ingresar, escrito de manera correcta.");
+        let color = prompt("Ingrese el color de zapato a ingresar, escrito de manera correcta.");
+        let cantidad = prompt("Ingrese la cantidad del zapato que desea ingresar, escrito de manera correcta.");
+        let precio = prompt("Ingrese el precio del zapato a ingresar, escrito de manera correcta.");
+        if(precio - precio != 0 || cantidad - cantidad != 0 ){
+            console.log("Lo siento, o la cantidad o el precio no fue bien ingresado.");
+            return;
+        }
+        let zapatoNuevo=new Zapato(modelo,color,cantidad,precio);
+        estanteria.push(zapatoNuevo);
+    }
+    console.log(estanteria);
+}
+function buscarZapato(array){
+   
+        let modeloBuscado = prompt("Ingrese el nombre del zapato que desea buscar");
+        let modeloEncontrado = array.find(
+            //Una function arrow si no tiene {} tiene un return implicito
+            // (book) => {return book.titulo == "Aleph"}
+              (zap) => zap.modelo.toLowerCase() == modeloBuscado.toLowerCase()
+        )
+        console.log(modeloEncontrado);
+        
+        if(modeloEncontrado == undefined){
+            console.log(`${modeloEncontrado} no se encuentra en nuestro stock`);
+        }
+        
+}
+function verZapatos(array){
+    for(let elemento of array){
+        console.log(elemento.modelo, elemento.color, elemento.cantidad, elemento.precio);
+    }
+    }
 
 
 
 //       MAIN DEL CODIGO      
 let salirMenu=true;
 do{
-    let opcionMenu= prompt(`Ingrese la accion que desea realizar
+    let opcionMenu= prompt(`Ingrese la accion que desea realizar:
     1 - Ver estado de cuenta.
-    2 - Depositar
-    3 - Retirar
-    4 - Solicitar Prestamo`);
+    2 - Depositar.
+    3 - Retirar.
+    4 - Solicitar Prestamo.
+    5 - Ingresar al sistema de administrador.
+    6 - Ver Zapatos.
+    7 - Buscar Zapato.
+    8 - Salir.
+    `);
     switch(opcionMenu){
     case "1":
         ver();
@@ -95,6 +163,18 @@ do{
     break;
     case "4":
         prestamo();
+    break;
+    case "5":
+        ingresarAdministrador();
+    break;
+    case "6":
+        verZapatos(estanteria);
+    break;
+    case "7":
+        buscarZapato(estanteria);
+    break;
+    case "8":
+        salirMenu=false;
     break;
     default:
         console.log("Lo siento, ingrese una opcion valida");
