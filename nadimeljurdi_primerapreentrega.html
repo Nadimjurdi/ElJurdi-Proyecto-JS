@@ -10,31 +10,49 @@
 <body>
     <header>
         <div class="contenedor">
-        <h1>Segunda Pre-entrega</h1>
+        <h1>Tercera Pre-entrega</h1>
         <div class="center-1">
-            <div><a href="">Inicio</a></div>
+            <div><a href="./nadimeljurdi_primerapreentrega.html">Inicio</a></div>
             <div><a href="">Cuenta</a></div>
             <div><a href="">Zapatos</a></div>     
         </div>
+        <div class="divInput"><input id="searchInput" type="text" placeholder="Adidas Yeezy"> <button id="searchButton"><a href=""><img src="./imagenes/lupa.jpg" alt=""></a></button></div>
     </div>
     </header>
     <main>
+        <div class="coincidencia"></div>
+        <div id="ordenar"><select name="Ordenar" id="orden">
+            <option value="1">Alfabeticamente</option>
+            <option value="2">Menor a Mayor</option>
+            <option value="3">Mayor a Menor</option>
+        </select></div>
         <h2>¡Nuevos Lanzamientos!</h2>
-        <div class="contenedor-img">
-            <div><a href=""><img src="./imagenes/nike.jpg" alt=""><h6>Zapatos Nike <br> $1500,00</h6></a></div>
-            <div><a href=""><img src="./imagenes/nike.jpg" alt=""><h6>Zapatos Nike <br> $1500,00</h6></a></div>
-            <div><a href=""><img src="./imagenes/nike.jpg" alt=""><h6>Zapatos Nike <br> $1500,00</h6></a></div>
-            <div><a href=""><img src="./imagenes/nike.jpg" alt=""><h6>Zapatos Nike <br> $1500,00</h6></a></div>
-            <div><a href=""><img src="./imagenes/nike.jpg" alt=""><h6>Zapatos Nike <br> $1500,00</h6></a></div>
-            <div><a href=""><img src="./imagenes/nike.jpg" alt=""><h6>Zapatos Nike <br> $1500,00</h6></a></div>
-            <div><a href=""><img src="./imagenes/nike.jpg" alt=""><h6>Zapatos Nike <br> $1500,00</h6></a></div>
-            <div><a href=""><img src="./imagenes/nike.jpg" alt=""><h6>Zapatos Nike <br> $1500,00</h6></a></div>
+        <div id="zapatosDiv">
         </div>
+        <div class="administrador">
+            <button id="registrar">Ingresar Zapatos</button>
+        <form class="formContenedor" action="">
+            <input id="nombreZapato" type="text" placeholder="Ingrese el nombre del zapato">
+            <input id="modeloZapato" type="text" placeholder="Ingrese el modelo del zapato">
+            <input id="precioZapato" type="text" placeholder="Ingrese el precio del zapato">
+            <button id="formZapato">Enviar</button>
+        </form>
+    </div>
         <h2>Tu estado de cuenta</h2>
         <div class="cuenta">
-            <div><h4>Saldo a favor:</h4></div>
-            <div><h4>Monto a retirar:</h4></div>
-            <div><h4>Monto a depositar:</h4></div>
+            <div class="saldoCuenta">
+                <h4 id="saldoCuenta">Saldo a favor:</h4>
+            </div>
+            <div>
+                <h4>Monto a retirar:</h4>
+                <input type="text" id="montoRetiro">
+                <button type="submit" id="retirar">Retirar</button>
+            </div>
+            <div>
+                <h4>Monto a depositar:</h4>
+                <input type="text" name="" id="montoDeposito" >
+                <button type="submit" id="depositar">Depositar</button>
+            </div>
         </div>
     </main>
     <footer>        

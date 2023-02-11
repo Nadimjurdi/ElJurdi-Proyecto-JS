@@ -1,184 +1,192 @@
-        //DECLARACION DE FUNCIONES
-        let continuar = "si";
-        let monto = 100000;
-        let deuda = 0;
-        const estanteria = [];
-function ver(){
+//DECLARACION DE FUNCIONES
+let continuar = "si";
+let monto = 100000;
+let deuda = 0;
+let estanteria = [];
+let Pcarrito;
+
+function ver() {
     console.log(`Usted tiene ${monto} en su cuenta.`);
     console.log(`Usted debe un total de ${deuda} en su cuenta`);
 }
-function depositar(){
-    do{
-    let montoIngresado = parseInt(prompt(`¿Cuanto desea depositar?`));
-    if((montoIngresado - montoIngresado != 0) || montoIngresado<0){
-        console.log("Lo siento no ingreso un numero");
-        return;
-    }
-    monto = montoIngresado + monto;
-    continuar = prompt("¿Desea depositar mas?, diga SI o NO");
-}while(continuar=="si" || continuar=="SI" || continuar=="Si" || continuar=="sI");
-}  
-function retirar(){
-    do{
-    let montoIngresado = parseInt(prompt(`¿Cuanto desea retirar?`));
-    if((montoIngresado - montoIngresado != 0) || montoIngresado < 0 ){
-        console.log("Lo siento no ingreso un numero valido");
-        return;
-    }
-    if(monto - montoIngresado < 0){
-        console.log("Lo siento no cuenta con fondos suficientes para hacer el retiro");
-        return;
-    }
-    monto = monto - montoIngresado;
-    continuar = prompt("¿Desea retirar mas?, diga SI o NO");
-
-}while(continuar=="si" || continuar=="SI" || continuar=="Si" || continuar=="sI");
-}  
-function prestamo(prestar,tiempo){
-    let seleccionar = prompt(`Seleccione una opcion de las siguientes:
-    1 - Tomar un prestamo.
-    2 - Pagar prestamo.`);
-    if(seleccionar== 1){
-    prestar= parseInt(prompt(`¿Cuanto dinero necesita?`));
-    tiempo = prompt(`¿En cuanto tiempo desea devolver el total del dinero?
-    1 - 1 año.
-    2 - 2 años.
-    3 - 3 años.`);
-    let total1 = (prestar * 0.10) * tiempo; 
-    let total2 = (total1 + prestar)/(tiempo * 12);
-    if(monto >= 100000 && deuda <= 100000){
-        monto = monto + prestar;
-        deuda = deuda + prestar;
-        console.log(`Felicidades, su prestamo fue aprobado, usted debe pagar ${total2} mensual durante ${tiempo} años.`);
-    }else{
-        console.log("Lo siento, aun no puede tomar un prestamo.");
-    }
-}else if(seleccionar == 2){
-    let montoIngresado = parseInt(prompt(`¿Cuanto desea transefir de su cuenta a su deuda?`));
-    if((montoIngresado - montoIngresado != 0) || montoIngresado<0){
-        console.log("Lo siento no ingreso un numero");
-        return;
-    }
-    if(montoIngresado > deuda){
-        console.log("Lo siento, no debe tanto, vuelva a intentarlo.");
-        return;
-    }
-    deuda = deuda - montoIngresado;
-    monto = monto - montoIngresado;
-    console.log("Transferencia realizada con exito.");
-}
-
-}
-function ingresarAdministrador(){
-    let clave = 12345
-    if(prompt("Ingrese su clave de administrador para acceder.") == clave){
-        let accionAdmin = prompt(`Ingrese la accion a realizar:
-        1 - Ingresar Zapato.
-        2 - Retirar Zapatos.
-        3 - Modificar Cantidades.`);
-        switch(accionAdmin){
-            case "1":
-                ingresarZapato();
-            break;
-            case "2":
-            break;
-            case "3":
-            break;
-            default:
-            break;
-        }    
-    }else{
-        console.log("Lo siente, clave incorrecta. Vuelva a intentarlo.")
-    }
-}
-function ingresarZapato(){
-    class Zapato{
-        constructor(modelo,color,cantidad, precio){
-            this.modelo= modelo,
-            this.color= color,
-            this.cantidad= cantidad,
-            this.precio = precio
-        }
-    }
-    let cantidadAIngresar= prompt("Ingrese cuantos modelos de zapatos desea ingresar."); 
-    for(let i = 1; i <= cantidadAIngresar; i++){
-        let modelo = prompt("Ingrese el modelo de zapato a ingresar, escrito de manera correcta.");
-        let color = prompt("Ingrese el color de zapato a ingresar, escrito de manera correcta.");
-        let cantidad = prompt("Ingrese la cantidad del zapato que desea ingresar, escrito de manera correcta.");
-        let precio = prompt("Ingrese el precio del zapato a ingresar, escrito de manera correcta.");
-        if(precio - precio != 0 || cantidad - cantidad != 0 ){
-            console.log("Lo siento, o la cantidad o el precio no fue bien ingresado.");
-            return;
-        }
-        let zapatoNuevo=new Zapato(modelo,color,cantidad,precio);
-        estanteria.push(zapatoNuevo);
-    }
-    console.log(estanteria);
-}
-function buscarZapato(array){
-   
-        let modeloBuscado = prompt("Ingrese el nombre del zapato que desea buscar");
-        let modeloEncontrado = array.find(
-            //Una function arrow si no tiene {} tiene un return implicito
-            // (book) => {return book.titulo == "Aleph"}
-              (zap) => zap.modelo.toLowerCase() == modeloBuscado.toLowerCase()
-        )
-        console.log(modeloEncontrado);
-        
-        if(modeloEncontrado == undefined){
-            console.log(`${modeloEncontrado} no se encuentra en nuestro stock`);
-        }
-        
-}
-function verZapatos(array){
-    for(let elemento of array){
-        console.log(elemento.modelo, elemento.color, elemento.cantidad, elemento.precio);
-    }
-    }
 
 
-
-//       MAIN DEL CODIGO      
-let salirMenu=true;
-do{
-    let opcionMenu= prompt(`Ingrese la accion que desea realizar:
-    1 - Ver estado de cuenta.
-    2 - Depositar.
-    3 - Retirar.
-    4 - Solicitar Prestamo.
-    5 - Ingresar al sistema de administrador.
-    6 - Ver Zapatos.
-    7 - Buscar Zapato.
-    8 - Salir.
-    `);
-    switch(opcionMenu){
-    case "1":
-        ver();
-    break;
-    case "2":
-        depositar();
-    break;
-    case "3":
-        retirar();
-    break;
-    case "4":
-        prestamo();
-    break;
-    case "5":
-        ingresarAdministrador();
-    break;
-    case "6":
+function agregarZapato() {
+    let formZapato = document.getElementById("formZapato");
+    let registrar = document.getElementById("registrar");
+    let formContenedor = document.querySelector(".formContenedor");
+    let nombreZapato = document.getElementById("nombreZapato");
+    let modeloZapato = document.getElementById("modeloZapato");
+    let precioZapato = document.getElementById("precioZapato");
+    registrar.onclick = (e) => {
+        e.preventDefault();
+        formContenedor.classList.add(`formContenedorshow`);
+    }
+    formZapato.onclick = (e) => {
+        e.preventDefault();
+        formContenedor.classList.remove(`formContenedorshow`);
+        const nuevoZapato = new Zapato(estanteria.length + 1, nombreZapato.value, modeloZapato.value, parseInt(precioZapato.value), "./imagenes/sin_imagen.jpg");
+        estanteria.push(nuevoZapato);
+        localStorage.setItem("estanteria", JSON.stringify(estanteria));
         verZapatos(estanteria);
-    break;
-    case "7":
-        buscarZapato(estanteria);
-    break;
-    case "8":
-        salirMenu=false;
-    break;
-    default:
-        console.log("Lo siento, ingrese una opcion valida");
-    break;
+        formContenedor.reset();
+    }
+}
+function verZapatos(array) {
+    zapatosDiv.innerHTML = "";
+
+    for (let zapato of array) {
+        let nuevoZapatoDiv = document.createElement("div");
+        nuevoZapatoDiv.className = "contenedor-img"
+        nuevoZapatoDiv.innerHTML = `<a><img class="fotoZapato" src="${zapato.imagen}" alt=""><div class="textoCard"><h6>${zapato.marca} ${zapato.modelo} <br> $${zapato.precio}</h6>
+    <button id="botonCarrito${zapato.id}"><img class="carritoCompra" src="./imagenes/cesta.jpg"></button></div></a>
     
-}}while(salirMenu);
+    </div>
+   `
+        zapatosDiv.appendChild(nuevoZapatoDiv);
+        console.log(zapato.id)
+
+
+    }
+}
+
+
+function carritoCompra(array) {
+    for (let zapato of array) {
+        if (localStorage.getItem("carrito")) {
+            Pcarrito = JSON.parse(localStorage.get("carrito"));
+
+        } else {
+            Pcarrito = [];
+            localStorage.setItem("carrito", Pcarrito);
+        }
+        let botonCarrito = document.getElementById(`botonCarrito${zapato.id}`);
+        botonCarrito.onclick = () => {
+            Pcarrito.push(zapato);
+            localStorage.setItem("carrito", JSON.stringify(Pcarrito))
+        }
+    }
+}
+function encontrarZapato(array) {
+    let searchInput = document.querySelector("#searchInput");
+    let coincidencia = document.querySelector(".coincidencia");
+
+    console.log(searchInput.value);
+    searchInput.addEventListener("input", () => {
+        let searchArray = array.filter(
+            (zapato) => zapato.marca.toLowerCase().includes(searchInput.value.toLowerCase()) || zapato.modelo.toLowerCase().includes(searchInput.value.toLowerCase())
+        )
+        if (searchArray.length == 0) {
+            coincidencia.innerHTML = `<h3>No hay coincidencias con su busqueda</h3>`
+            verZapatos(array)
+        } else {
+            coincidencia.innerHTML = "";
+            verZapatos(searchArray);
+        }
+
+    })
+
+}
+
+
+function ordenarMenMay(array) {
+    let ordenamiento = document.getElementById("orden");
+    ordenamiento.addEventListener("change", () => {
+        if (ordenamiento.value == "1") {
+            const alf = [].concat(array);
+            alf.sort((a, b) => {
+                if (a.marca > b.marca) {
+                    return 1;
+                }
+                if (a.marca < b.marca) {
+                    return -1;
+                }
+                return
+            })
+            verZapatos(alf);
+        } else if (ordenamiento.value == "2") {
+            const menMay = [].concat(array);
+            menMay.sort((a, b) => a.precio - b.precio)
+            verZapatos(menMay);
+        } else if (ordenamiento.value == "3") {
+            const mayMen = [].concat(array);
+            mayMen.sort((a, b) => b.precio - a.precio)
+            verZapatos(mayMen);
+        } else {
+            verZapatos(array);
+        }
+    })
+
+}
+
+function mostrarCuenta(monto) {
+    let cuentaDiv = document.getElementById("saldoCuenta");
+    let nuevaCuentaDiv = document.createElement("div");
+    cuentaDiv.removeChild(cuentaDiv.firstChild);
+
+    cuentaDiv.appendChild(nuevaCuentaDiv);
+    nuevaCuentaDiv.innerHTML = `
+    <p>Tu saldo es:</p>
+    <p>$${monto}</p>`;
+
+}
+function deposito() {
+    mostrarCuenta(monto);
+    let depositar = document.getElementById("depositar");
+    let depositacion = document.getElementById("montoDeposito")
+    depositar.onclick = () => {
+        if (parseInt(depositacion.value) - parseInt(depositacion.value) != 0) {
+            mostrarCuenta(monto);
+            return alert("Lo siento cantidad ingresada no valida");
+        } else {
+            monto = parseInt(depositacion.value) + monto;
+            mostrarCuenta(monto);
+        }
+    }
+}
+function retiro() {
+    mostrarCuenta(monto);
+    let retirar = document.getElementById("retirar");
+    let retirasion = document.getElementById("montoRetiro")
+    let retiro = parseInt
+    retirar.onclick = () => {
+        if (monto - parseInt(retirasion.value) < 0 || parseInt(retirasion.value) - parseInt(retirasion.value) != 0) {
+            mostrarCuenta(monto);
+            return alert("Lo siento cantidad ingresada no valida");
+        } else {
+            monto = monto - parseInt(retirasion.value);
+            mostrarCuenta(monto);
+        }
+    }
+}
+class Zapato {
+    constructor(id, marca, modelo, precio, imagen) {
+        this.id = id,
+            this.marca = marca,
+            this.modelo = modelo,
+            this.precio = precio,
+            this.imagen = imagen
+    }
+}
+const zapatoNuevo = new Zapato(1, "Nike", "Rojo", 1500, "./imagenes/nike_rojos.jpg");
+const zapatoNuevo2 = new Zapato(2, "Nike", "Blanco", 1950, "./imagenes/nike_blancos.jpg");
+const zapatoNuevo3 = new Zapato(3, "Nike", "Verde", 2449, "./imagenes/nike_verdes.jpg");
+const zapatoNuevo4 = new Zapato(4, "Nike", "Naranja", 1799, "./imagenes/nike_naranja.jpg");
+const zapatoNuevo5 = new Zapato(5, "Nike", "Marron", 1250, "./imagenes/nike_marron.jpg");
+const zapatoNuevo6 = new Zapato(6, "Vans", "Blanco y marron", 999, "./imagenes/vans.jpg");
+if (localStorage.getItem("estanteria") != null) {
+    estanteria = JSON.parse(localStorage.getItem("estanteria"));
+} else {
+    estanteria.push(zapatoNuevo, zapatoNuevo2, zapatoNuevo3, zapatoNuevo4, zapatoNuevo5, zapatoNuevo6);
+    localStorage.setItem("estanteria", JSON.stringify(estanteria))
+}
+
+
+deposito();
+retiro();
+agregarZapato(estanteria);
+verZapatos(estanteria);
+encontrarZapato(estanteria);
+ordenarMenMay(estanteria);
+carritoCompra(estanteria);
 
