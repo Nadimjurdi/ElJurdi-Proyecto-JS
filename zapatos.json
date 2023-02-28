@@ -1,0 +1,40 @@
+[
+    {
+        "id":1,
+        "marca": "nike",
+        "modelo":"rojo",
+        "precio": 1500,
+        "imagen":"./imagenes/nike_rojos.jpg"
+},{
+    "id":2,
+    "marca": "nike",
+    "modelo":"blanco",
+    "precio": 1950,
+    "imagen":"./imagenes/nike_blancos.jpg"
+},{
+    "id":3,
+    "marca": "nike",
+    "modelo":"verde",
+    "precio": 2449,
+    "imagen":"./imagenes/nike_verdes.jpg"
+},{
+    "id":4,
+    "marca": "nike",
+    "modelo":"naranja",
+    "precio": 1799,
+    "imagen":"./imagenes/nike_naranja.jpg"
+},{
+    "id":5,
+    "marca": "nike",
+    "modelo":"marron",
+    "precio": 1250,
+    "imagen":"./imagenes/nike_marron.jpg"
+},{
+    "id":6,
+    "marca": "vans",
+    "modelo":"Blanco y marron",
+    "precio": 999,
+    "imagen":"./imagenes/vans.jpg"
+}
+
+]

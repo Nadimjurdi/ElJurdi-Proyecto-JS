@@ -1,0 +1,205 @@
+
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: firebrick;
+}
+.contenedor{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 1px gray solid;
+    background: linear-gradient(90deg,#FAB0B0 50%, #eeeeee 100%) ;
+
+}
+.divInput{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 1px;
+}
+#searchInput{
+    width: 20vw;
+    max-width: 250px;
+    height: 20px;
+    border-radius: 10px;
+    margin:10px auto;
+}
+.searchButton{
+    margin:2px auto;
+    background:none;
+    border: 0;
+    width: 35px;
+    height:35px;
+    display: flex;
+    flex-direction: row;
+}
+.searchButton img{
+    padding: 3px;
+    border: 1px solid black;
+    border-radius:50%;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+h1{
+    margin: 0;
+    background: linear-gradient(90deg,#eeeeee 0%, #FAB0B0 50%) ;
+    text-align: center;
+    padding: 2vh;
+    border-bottom: 0.5px solid gray;
+
+}
+.center-1{
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    padding: 1vh;
+}
+.center-1 div{
+    padding-top: 0.5vh;
+    margin: 3px;
+}
+h2{
+    margin-left: 8vw;
+}
+#zapatosDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 2px black solid ;
+    margin: 20px;
+    }
+#zapatosDiv .contenedor-img{
+    border:1px solid gray;
+    margin:10px;
+    width: 280px;
+    height: 315px;
+    min-height: 280px;
+    
+    border-radius: 15px;
+    box-shadow: 1px 1px 4px 0.5px #f86f6f;
+}
+#zapatosDiv .contenedor-img a .fotoZapato{
+    margin: auto;
+    height: 250px;
+    width: 280px;
+
+    border-radius: 15px;
+    box-shadow: 0 2px 4px 0.5px #f86f6f;
+}
+#zapatosDiv .contenedor-img a button{
+    background: none;
+    border:0;
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+}
+#zapatosDiv .contenedor-img a button .carritoCompra, #zapatosDiv .contenedor-img a .bottomEtiqueta button .eliminarCarrito{
+    border:2px solid black;
+    margin-top: 2px;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    background-color: white ;
+    border-radius: 50%;
+}
+#zapatosDiv .contenedor-img a button .carritoCompra:hover{
+    border-color: #f86f6f;
+}
+
+#zapatosDiv .contenedor-img a .textoCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;    
+    box-shadow: 0 0 4px 0.5px #FAB0B0;
+    margin: 15px;
+    border-radius: 5px;
+
+}
+#zapatosDiv .searchButton .accionesCarrito{
+    margin:10px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px gray solid;
+    box-shadow: 0.5px 1px 5px 0.2px #ff7a7a;
+    background-color: #eeeeee ;
+}
+
+
+
+.formContenedor{
+    left: 0;
+    right: 0;
+    top: 25%;
+    padding: 25px;
+    width: 90%;
+    max-width: 500px;
+    background-color: #ff7a7a;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    margin: auto;
+    border-radius: 15px;
+    border: 1px solid gray;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.formContenedorshow{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity 0.6s;
+
+}
+.formContenedor input{
+    margin: 15px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px gray dashed;
+    box-shadow: 0.5px 0.5px 3px 1px rgb(187, 187, 187) ;
+        
+}
+.formContenedor button,.administrador button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: auto;
+    background-color: #FAB0B0;
+    border: 1px solid black;
+    transition: background-color 0.2s;
+    
+}
+.administrador button{
+    display: flex;
+    margin: auto;
+}
+.formContenedor button:hover, .administrador button:hover{
+    background-color: #f86f6f;
+    color:white;
+}
+
+h6{
+    padding: 0;
+    margin: 5px 0 5px 10px;
+}
+
+.cuenta{
+    margin-left: 8vw;
+    border-bottom: 1px solid black;
+}
+
+footer{
+    
+}
+
+
+
+
+
